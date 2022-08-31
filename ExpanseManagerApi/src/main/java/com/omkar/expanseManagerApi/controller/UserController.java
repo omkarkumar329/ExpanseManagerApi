@@ -1,5 +1,7 @@
 package com.omkar.expanseManagerApi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ public class UserController {
 	
 	
 	@PostMapping("/register")
-     public ResponseEntity<User> Save(@RequestBody UserModel user)
+     public ResponseEntity<User> Save(@Valid @RequestBody UserModel user)
      {
     	
     	 return new ResponseEntity<User>(userService.createUser(user),HttpStatus.CREATED);
