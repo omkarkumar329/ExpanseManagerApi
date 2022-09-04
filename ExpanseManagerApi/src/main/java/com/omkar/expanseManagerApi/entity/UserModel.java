@@ -1,5 +1,6 @@
 package com.omkar.expanseManagerApi.entity;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,7 +15,8 @@ public class UserModel {
 	private String name;
 	@NotNull(message = "Please enter email")
 	@Email(message = "Please enter valid email")
-	private String email;
+	@Column(unique= true)
+	private String Email;
 	
 	@NotNull(message = "Please enter password")
 	@Size(min = 5, message = "Password should be atleast 5 characters")

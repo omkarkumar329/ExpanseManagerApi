@@ -8,4 +8,6 @@ import com.omkar.expanseManagerApi.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	//Optional<User> findByEmail(String email);
+//	Boolean existsByEmail(String email);
 }

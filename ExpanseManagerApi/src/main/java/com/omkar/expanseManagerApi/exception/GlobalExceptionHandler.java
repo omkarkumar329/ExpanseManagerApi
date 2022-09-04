@@ -85,5 +85,21 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<Object>(body, HttpStatus.BAD_REQUEST);
 
 	}
+	
+	@ExceptionHandler(ItemAlreadyExistsException.class)
+	protected ResponseEntity<ErrorObject> handleItemAlreadyExistsException(ItemAlreadyExistsException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+		ErrorObject errorObject = new ErrorObject();
+
+		errorObject.setStatusCode(HttpStatus.CONFLICT.value());
+
+		errorObject.setMessage(ex.getMessage());
+
+		errorObject.setTimestamp(new Date());
+
+		return new ResponseEntity<ErrorObject>(errorObject, HttpStatus.CONFLICT);
+	}
+
 
 }
